@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shu.bank.authorization.dao.LoginUserMapper">
+	
+
+   <!-- 查询登录用户信息 -->
+   <select id="queryUserLoginInfo" parameterType="com.shu.bank.authorization.model.UserInfoDto" resultType="com.shu.bank.authorization.model.UserInfoVO">
+        SELECT
+		    user.teller_no as tellerNo,
+		    user.teller_name as tellerName,
+		    user.inst_no as instNo,
+		    user.teller_status as tellerStatus,
+		    user.pass_word as passWord,
+		    user.teller_adress as tellerAddress,
+		    user.teller_attr as tellerAttr,
+		    user.del_flag as delFla
+
+		FROM
+			shubank.tb_teller_info user
+		where user.teller_no = #{tellerNo}
+
+    </select>
+
+	
+</mapper>

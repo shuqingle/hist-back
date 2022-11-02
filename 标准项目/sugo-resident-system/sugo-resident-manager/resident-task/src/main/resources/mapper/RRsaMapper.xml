@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sugo.resident.task.rsa.dao.RRsaMapper">
+
+	<!-- 删除rsa信息 -->
+	<delete id="deleteRsa" parameterType="com.sugo.resident.task.rsa.model.RsaDTO">
+		delete
+		from tb_rsa_info
+		where create_date = #{createDate}
+	</delete>
+
+	<!--新增rsa记录-->
+	<insert id="addRsa" parameterType="com.sugo.resident.task.rsa.model.RsaDTO">
+		insert into tb_rsa_info
+		(
+			 create_date,
+			 public_key,
+			 private_key
+		 )
+		values
+		(
+		    #{createDate},
+			#{publicKey},
+			#{privateKey}
+		)
+	</insert>
+
+
+
+	
+</mapper>

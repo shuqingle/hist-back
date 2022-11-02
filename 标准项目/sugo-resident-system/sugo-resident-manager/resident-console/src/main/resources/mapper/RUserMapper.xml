@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sugo.resident.console.ruser.dao.RUserMapper">
+	<!--人员字段属性映射-->
+	<resultMap id="userInfoMap" type="com.sugo.resident.console.ruser.model.UserInfoVO">
+		<result property="tellerNo" column="teller_no"/>
+		<result property="tellerName" column="teller_name"/>
+		<result property="tellerIdcard" column="teller_idcard"/>
+		<result property="instSeqNo" column="inst_seq_no"/>
+		<result property="phoneNo" column="phone_no"/>
+		<result property="tellerPassword" column="teller_password"/>
+		<result property="headPhonto" column="head_phonto"/>
+		<result property="tellerStatus" column="teller_status"/>
+	</resultMap>
+	<!--人员信息表全字段-->
+	<sql id="userInfoFields">
+		teller_no,
+		teller_name,
+		teller_idcard,
+		inst_seq_no,
+		phone_no,
+		teller_password,
+		head_phonto,
+		teller_status
+	</sql>
+
+   <!-- 查询登录用户信息 -->
+   <select id="queryUserLoginInfo" parameterType="com.sugo.resident.console.ruser.model.UserInfoDto" resultMap="userInfoMap">
+        SELECT
+		    <include refid="userInfoFields"/>
+		FROM
+			tb_user_info
+		where teller_no = #{tellerNo}
+
+    </select>
+
+	
+</mapper>
